@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Портфолио - wedding rave</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&amp;family=Manrope:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="styles.css?v=21" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<style id="final-visibility-overrides">
+  :root{
+    --text-dark:#1a1a1a;
+    --text-light:#F8F5F0;
+  }
+  /* Make sure animations never leave text invisible on iOS */
+  @supports (-webkit-touch-callout: none){
+    .fade-in-up,.fade-in-left,.fade-in-right,.scale-in{opacity:1!important;transform:none!important;}
+  }
+  /* Dark sections — light text */
+  .hero,.stats-section,.values-section,.cta-section,.footer{color:var(--text-light)!important;}
+  .hero *,.stats-section *,.values-section *,.cta-section *,.footer *{color:inherit!important;}
+  /* Light sections & cards — dark text */
+  .page-header,.team-section,.services-section,.contact-info,.contact-form-section,
+  .portfolio-stats,.faq-section,.service-card,.review-card,.review-item,.overall-rating,
+  .map-section,.additional-services,.additional-card,.all-reviews,.portfolio-filter,
+  .view-project,.contact-card,.story-content,.about-content,.team-content{color:var(--text-dark)!important;}
+  .page-header *,.team-section *,.services-section *,.contact-info *,.contact-form-section *,
+  .portfolio-stats *,.faq-section *,.service-card *,.review-card *,.review-item *,.overall-rating *,
+  .map-section *,.additional-services *,.additional-card *,.all-reviews *,.portfolio-filter *,
+  .view-project *,.contact-card *,.story-content *,.about-content *,.team-content *{color:inherit!important;}
+  /* Stats numbers inherit */
+  .stat-number,.stat-label{color:inherit!important;text-shadow:none!important;}
+  /* Navbar brand readable */
+  .nav-logo a{color:#fff!important;}
+  /* Footer social compact icons */
+  .footer-social .social-link{width:44px;height:44px;border-radius:50%;font-size:0;}
+  .footer-social .social-link i,.footer-social .social-link svg{font-size:22px;width:22px;height:22px;}
+  /* Contact social pills */
+  .social-icons{display:flex;gap:12px;flex-wrap:wrap;}
+  .social-icons .social-link{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:9999px;background:var(--color-accent-gold);color:#000!important;border-color:var(--color-accent-gold);width:auto;height:auto;}
+  .social-icons .social-link i,.social-icons .social-link svg{font-size:18px;width:18px;height:18px;}
+  .social-icons .social-link span{display:inline;}
+</style>
+<style>
+/* Folder tiles for Portfolio */
+.portfolio-folders { padding: 40px 0; }
+.folders-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+.folder-tile { display: flex; align-items: center; justify-content: center; border: 1px solid rgba(0,0,0,0.08); border-radius: 14px; padding: 24px; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; color: inherit; background: rgba(255,255,255,0.6); backdrop-filter: blur(2px); }
+.folder-tile:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.folder-title { font-weight: 600; letter-spacing: .3px; }
+</style><style>
+/* Folder tile styling update: beige tile with gold outline */
+.folder-tile{
+  background: #E6D6C5 !important;
+  border: 2px solid #D4AF37 !important;
+  color: #000 !important;
+}
+.folder-tile:hover{
+  box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
+}
+</style><style>
+/* Folder tile with photo cover */
+.folder-tile.has-cover{
+  position: relative;
+  height: 220px;
+  padding: 0;
+  background-size: cover;
+  background-position: center;
+  color: #fff !important;
+}
+@media (max-width: 640px){
+  .folder-tile.has-cover{ height: 180px; }
+}
+.folder-tile.has-cover::after{
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,.25));
+  border-radius: inherit;
+}
+.folder-tile.has-cover .folder-title{
+  position: absolute;
+  left: 16px; right: 16px; bottom: 14px;
+  z-index: 1;
+  color: #fff; 
+  text-shadow: 0 2px 8px rgba(0,0,0,.4);
+  font-weight: 600;
+}
+</style><style>
+/* Center folder titles and make them bigger */
+.folder-title{ font-size: 2em !important; text-align: center; }
+/* Ensure non-cover tiles center content vertically & horizontally */
+.folder-tile{ display:flex; align-items:center; justify-content:center; }
+/* Center title on cover tiles as well */
+.folder-tile.has-cover .folder-title{
+  position: absolute;
+  left: 50% !important; right: auto !important; top: 50% !important; bottom: auto !important;
+  transform: translate(-50%, -50%) !important;
+  text-align: center !important;
+}
+</style><style>
+/* === Revert folder title to normal size/placement and center tiles === */
+/* Title back to normal (half of previous 2em) */
+.folder-title{ font-size: 1em !important; text-align: initial !important; }
+/* Remove forced centering inside tiles */
+.folder-tile{ display: block !important; }
+/* Cover tiles: return title to bottom-left overlay */
+.folder-tile.has-cover .folder-title{
+  left: 16px !important; right: 16px !important; bottom: 14px !important; top: auto !important;
+  transform: none !important; text-align: left !important;
+}
+/* Center the tiles within the section */
+.folders-grid{
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* center horizontally */
+}
+.folder-tile{
+  min-width: 240px;
+  max-width: 320px;
+}
+</style></head>
+<body class="portfolio-page">
+<!-- Navigation -->
+<nav class="navbar">
+<div class="nav-container">
+<div class="nav-logo">
+<a href="index.html">wedding rave</a>
+</div>
+<div class="nav-menu" id="nav-menu">
+<a class="nav-link" href="index.html">Главная</a>
+<a class="nav-link" href="about.html">О нас</a>
+<a class="nav-link" href="services.html">Услуги</a>
+<a class="nav-link active" href="portfolio.html">Портфолио</a>
+<a class="nav-link" href="reviews.html">Отзывы</a>
+<a class="nav-link" href="contacts.html">Контакты</a>
+</div>
+<div class="nav-toggle" id="nav-toggle">
+<span class="bar"></span>
+<span class="bar"></span>
+<span class="bar"></span>
+</div>
+</div>
+</nav>
+<!-- Page Header -->
+<section class="page-header">
+<div class="container">
+<h1 class="page-title">ПОРТФОЛИО</h1>
+<p class="page-subtitle">Наши лучшие работы и вдохновляющие проекты</p>
+</div>
+</section>
+<!-- Portfolio Filter -->
+<section class="portfolio-filter">
+<div class="container">
+<div class="filter-buttons">
+<button class="filter-btn active" data-filter="all">Все проекты</button>
+<button class="filter-btn" data-filter="wedding">Свадьбы</button>
+</div>
+</div>
+</section>
+<!-- Portfolio Grid -->
+<section class="portfolio-folders"><div class="container"><div class="folders-grid"><a class="has-cover folder-tile" href="portfolio/anna-i-ildar/index.html" style="background-image: url('images/covers/anna-i-ildar-cover.jpg');"><div class="folder-title">Анна и Ильдар</div></a><a class="has-cover folder-tile" href="portfolio/dasha-i-nikita/index.html" style="background-image: url('images/covers/dasha-i-nikita-cover.jpg');"><div class="folder-title">Даша и Никита</div></a><a class="has-cover folder-tile" href="portfolio/anna-i-andrey/index.html" style="background-image: url('images/covers/anna-i-andrey-cover.jpg');"><div class="folder-title">Анна и Андрей</div></a></div></div></section><section class="portfolio-grid">
+<div class="container">
+<div class="portfolio-items">
+<!-- Wedding Project 1 -->
+<div class="portfolio-item" data-category="wedding">
+<div class="portfolio-image">
+<div class="portfolio-overlay">
+</div>
+</div>
+</div>
+<!-- Wedding Project 2 -->
+<div class="portfolio-item" data-category="wedding">
+<div class="portfolio-image">
+<div class="portfolio-overlay">
+</div>
+</div>
+</div>
+<!-- Wedding Project 3 -->
+<div class="portfolio-item" data-category="wedding">
+<div class="portfolio-image">
+<div class="portfolio-overlay">
+</div>
+</div>
+</div>
+<!-- Corporate Event -->
+<div class="portfolio-item" data-category="corporate">
+<div class="portfolio-image">
+<div class="portfolio-overlay">
+</div>
+</div>
+</div>
+<!-- Birthday Party -->
+<div class="portfolio-item" data-category="birthday">
+<div class="portfolio-image">
+<div class="portfolio-overlay">
+</div>
+</div>
+</div>
+<!-- Other Event -->
+<div class="portfolio-item" data-category="other">
+<div class="portfolio-image">
+<div class="portfolio-overlay">
+</div>
+</div>
+</div>
+<!-- Additional Projects -->
+<div class="portfolio-item" data-category="wedding">
+<div class="portfolio-image">
+<div class="portfolio-overlay">
+</div>
+</div>
+</div>
+<!-- Another Event -->
+<div class="portfolio-item" data-category="other">
+<div class="portfolio-image">
+<div class="portfolio-overlay">
+</div>
+</div>
+</div>
+<div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div><div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div><div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div><div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div><div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div><div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div><div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div><div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div><div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div><div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div><div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div><div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div><div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div><div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div><div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div><div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div><div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div><div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div><div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div><div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div><div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div><div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div><div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div><div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div><div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div><div class="portfolio-item" data-category="wedding"><div class="portfolio-image"><div class="portfolio-overlay"></div></div></div></div>
+</div>
+</section>
+<!-- Project modal removed -->
+<!-- CTA Section -->
+<section class="cta-section">
+<div class="container">
+<div class="cta-content">
+<h2>ВДОХНОВИЛИСЬ НАШИМИ РАБОТАМИ?</h2>
+<p>Давайте создадим что-то особенное и для вас</p>
+<a class="btn btn-primary btn-large" href="contacts.html">
+                    ОБСУДИТЬ ВАШ ПРОЕКТ
+                    <i class="fas fa-arrow-right"></i>
+</a>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="footer">
+<div class="container">
+<div class="footer-content">
+<div class="footer-logo">
+<h3>wedding rave</h3>
+<p>Организация свадеб мечты</p>
+</div>
+<div class="footer-links">
+<a href="about.html">О нас</a>
+<a href="services.html">Услуги</a>
+<a href="portfolio.html">Портфолио</a>
+<a href="contacts.html">Контакты</a>
+</div>
+<div class="footer-social">
+<a class="social-link" href="https://www.instagram.com/wedding_rave?igsh=MWtxNGZhaGR1MG11aw%3D%3D&amp;utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+<a class="social-link" href="https://wa.me/89104656880" target="_blank"><i class="fab fa-whatsapp"></i></a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2025 wedding rave. Все права защищены.</p>
+</div>
+</div>
+</footer>
+<script src="script.js?v=15"></script>
+<!-- Custom Lightbox Modal -->
+<script>
+// МАКСИМАЛЬНО НАДЕЖНЫЙ LIGHTBOX
+(function() {
+    'use strict';
+    
+    let lightboxInitialized = false;
+    let modal = null;
+    let images = [];
+    let currentIndex = 0;
+    
+    // Функция инициализации
+    function initLightbox() {
+        if (lightboxInitialized) return;
+        
+        console.log('🚀 Инициализация максимально надежного lightbox...');
+        
+        // Создаем модальное окно
+        modal = document.createElement('div');
+        modal.id = 'lightbox-modal';
+        modal.className = 'lightbox-modal';
+        modal.innerHTML = `
+            <div class="lightbox-content">
+                <img class="lightbox-image" src="" alt="Просмотр изображения">
+                <button class="lightbox-prev" onclick="window.lightboxPrev()">‹</button>
+                <button class="lightbox-next" onclick="window.lightboxNext()">›</button>
+                <button class="lightbox-close" onclick="window.lightboxClose()">×</button>
+                <div class="lightbox-counter">1 / 1</div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        console.log('✅ Модальное окно создано');
+        
+        // Находим ВСЕ изображения разными способами
+        const selectors = [
+            '.portfolio-image a',
+            '.portfolio-item a',
+            'a[data-lightbox]',
+            'a[href*=".jpg"]',
+            'a[href*=".jpeg"]',
+            'a[href*=".png"]',
+            'a[href*=".webp"]'
+        ];
+        
+        images = [];
+        selectors.forEach(selector => {
+            const found = document.querySelectorAll(selector);
+            found.forEach(img => {
+                if (!images.includes(img)) {
+                    images.push(img);
+                }
+            });
+        });
+        
+        console.log('📸 Найдено изображений:', images.length);
+        
+        // Глобальные функции
+        window.lightboxOpen = function(index) {
+            console.log('🔓 Открытие lightbox, индекс:', index);
+            if (!modal || !images[index]) return;
+            
+            currentIndex = index;
+            const imageSrc = images[currentIndex].getAttribute('href');
+            const imageElement = modal.querySelector('.lightbox-image');
+            const counterElement = modal.querySelector('.lightbox-counter');
+            
+            imageElement.src = imageSrc;
+            counterElement.textContent = (currentIndex + 1) + ' / ' + images.length;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+        
+        window.lightboxClose = function() {
+            console.log('🔒 Закрытие lightbox');
+            if (!modal) return;
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+        
+        window.lightboxPrev = function() {
+            console.log('⬅️ Предыдущее изображение');
+            if (!modal || images.length === 0) return;
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            const imageSrc = images[currentIndex].getAttribute('href');
+            const imageElement = modal.querySelector('.lightbox-image');
+            const counterElement = modal.querySelector('.lightbox-counter');
+            
+            imageElement.src = imageSrc;
+            counterElement.textContent = (currentIndex + 1) + ' / ' + images.length;
+        };
+        
+        window.lightboxNext = function() {
+            console.log('➡️ Следующее изображение');
+            if (!modal || images.length === 0) return;
+            currentIndex = (currentIndex + 1) % images.length;
+            const imageSrc = images[currentIndex].getAttribute('href');
+            const imageElement = modal.querySelector('.lightbox-image');
+            const counterElement = modal.querySelector('.lightbox-counter');
+            
+            imageElement.src = imageSrc;
+            counterElement.textContent = (currentIndex + 1) + ' / ' + images.length;
+        };
+        
+        // Добавляем обработчики ВСЕМИ способами
+        images.forEach(function(image, index) {
+            console.log('🔗 Добавление обработчика для изображения', index);
+            
+            // Обработчик на ссылку
+            image.addEventListener('click', function(e) {
+                console.log('🖱️ Клик по ссылке, индекс:', index);
+                e.preventDefault();
+                e.stopPropagation();
+                window.lightboxOpen(index);
+            });
+            
+            // Обработчик на изображение внутри ссылки
+            const img = image.querySelector('img');
+            if (img) {
+                img.addEventListener('click', function(e) {
+                    console.log('🖱️ Клик по изображению, индекс:', index);
+                    e.preventDefault();
+                    e.stopPropagation();
+                    window.lightboxOpen(index);
+                });
+            }
+        });
+        
+        // Обработчик на весь контейнер портфолио
+        const portfolioContainer = document.querySelector('.portfolio-items');
+        if (portfolioContainer) {
+            portfolioContainer.addEventListener('click', function(e) {
+                const clickedImage = e.target.closest('a');
+                if (clickedImage && images.includes(clickedImage)) {
+                    const index = images.indexOf(clickedImage);
+                    console.log('🖱️ Клик по контейнеру, индекс:', index);
+                    e.preventDefault();
+                    e.stopPropagation();
+                    window.lightboxOpen(index);
+                }
+            });
+        }
+        
+        // Закрытие по клику на фон
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                window.lightboxClose();
+            }
+        });
+        
+        // Обработка клавиатуры
+        document.addEventListener('keydown', function(e) {
+            if (!modal || !modal.classList.contains('active')) return;
+            
+            switch(e.key) {
+                case 'Escape':
+                    window.lightboxClose();
+                    break;
+                case 'ArrowLeft':
+                    window.lightboxPrev();
+                    break;
+                case 'ArrowRight':
+                    window.lightboxNext();
+                    break;
+            }
+        });
+        
+        lightboxInitialized = true;
+        console.log('✅ Lightbox полностью инициализирован!');
+    }
+    
+    // Множественные способы запуска
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLightbox);
+    } else {
+        initLightbox();
+    }
+    
+    window.addEventListener('load', function() {
+        setTimeout(initLightbox, 100);
+    });
+    
+    // Принудительная инициализация через 1 секунду
+    setTimeout(initLightbox, 1000);
+    
+    // Принудительная инициализация через 3 секунды
+    setTimeout(initLightbox, 3000);
+    
+    console.log('🚀 Lightbox скрипт загружен и готов к работе!');
+})();
+</script>
+</body>
+</html>
