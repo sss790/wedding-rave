@@ -413,3 +413,18 @@ function initializeAnimations() {
   setVh();
   window.addEventListener('resize', setVh);
 })();
+
+/* INIT PORTFOLIO FILTER ON LOAD */
+document.addEventListener('DOMContentLoaded',function(){
+  const activeBtn=document.querySelector('.filter-btn.active');
+  if(!activeBtn) return;
+  const initialFilter=activeBtn.getAttribute('data-filter');
+  const portfolioItems=document.querySelectorAll('.portfolio-item');
+  portfolioItems.forEach(item=>{
+    if(initialFilter==='all'||item.getAttribute('data-category')===initialFilter){
+      item.style.display='block'; setTimeout(()=>{item.style.opacity='1'; item.style.transform='scale(1)';},10);
+    } else {
+      item.style.opacity='0'; item.style.transform='scale(0.8)'; setTimeout(()=>{item.style.display='none';},300);
+    }
+  });
+});
