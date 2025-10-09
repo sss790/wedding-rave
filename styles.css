@@ -3595,3 +3595,11 @@ body, p, li, input, select, textarea, button {
 .masonry-grid .portfolio-item{display:inline-block;width:100%;margin:0 0 16px;break-inside:avoid;-webkit-column-break-inside:avoid;page-break-inside:avoid;}
 .masonry-grid .portfolio-image{position:relative;width:100%;aspect-ratio:auto;overflow:hidden;border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,.08);background:#f6f6f6;}
 .masonry-grid .portfolio-image img{width:100%;height:auto;display:block;object-fit:cover;}
+
+
+/* Extra spacing between about text and image on mobile */
+@media (max-width: 768px) {
+  .about-image { 
+    margin-top: 24px; /* lowered image slightly below the text */
+  }
+}
