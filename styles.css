@@ -1213,7 +1213,7 @@ p {
 /* Additional Services */
 .additional-services {
     padding: 6rem 0;
-    background: #fafafa;
+    background: #F5EEE6;
 }
 
 .additional-grid {
@@ -1274,7 +1274,7 @@ p {
 /* Portfolio Section */
 .portfolio-filter {
     padding: 2rem 0;
-    background: #fafafa;
+    background: #F5EEE6;
 }
 
 .filter-buttons {
@@ -1390,13 +1390,13 @@ p {
 /* Portfolio Stats */
 .portfolio-stats {
     padding: 4rem 0;
-    background: #fafafa;
+    background: #F5EEE6;
 }
 
 /* Reviews Section */
 .overall-rating {
     padding: 4rem 0;
-    background: #fafafa;
+    background: #F5EEE6;
     text-align: center;
 }
 
@@ -1530,7 +1530,7 @@ p {
 
 .all-reviews {
     padding: 4rem 0;
-    background: #fafafa;
+    background: #F5EEE6;
 }
 
 .reviews-list {
@@ -1600,7 +1600,7 @@ p {
 .contact-card {
     text-align: center;
     padding: 2rem;
-    background: #fafafa;
+    background: #F5EEE6;
     border-radius: 15px;
     transition: transform 0.3s ease;
 }
@@ -1617,7 +1617,7 @@ p {
 
 .contact-form-section {
     padding: 4rem 0;
-    background: #fafafa;
+    background: #F5EEE6;
 }
 
 .contact-content {
@@ -1742,7 +1742,7 @@ p {
 
 .faq-question {
     padding: 1.5rem;
-    background: #fafafa;
+    background: #F5EEE6;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -1774,7 +1774,7 @@ p {
 /* Map Section */
 .map-section {
     padding: 4rem 0;
-    background: #fafafa;
+    background: #F5EEE6;
 }
 
 .map-container {
@@ -3602,4 +3602,63 @@ body, p, li, input, select, textarea, button {
   .about-image { 
     margin-top: 24px; /* lowered image slightly below the text */
   }
+}
+
+
+/* Instagram contact link styled like phone buttons */
+.contact-card .contact-link {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #d4af37;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: 0.75rem;
+}
+.contact-card .contact-link:hover {
+    background: #d4af37;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Small legal disclaimer under Instagram tile */
+.contact-card .insta-disclaimer {
+    font-size: 12px;
+    color: #666;
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+
+/* Bottom circular icons on Contacts */
+.bottom-icons{
+    display:flex;
+    gap:1rem;
+    justify-content:center;
+    align-items:center;
+    padding: 1.5rem 0;
+}
+.round-icon{
+    width:48px;
+    height:48px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background: #ffffff;
+    color: var(--text-dark);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border: 1px solid #eee;
+}
+.round-icon:hover{
+    transform: translateY(-2px);
+}
+
+
+/* round social links */
+.footer-social .social-link{
+    border-radius: 50%;
+}
+.footer-social .social-link i{
+    font-size: 20px;
 }
