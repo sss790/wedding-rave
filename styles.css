@@ -3662,3 +3662,39 @@ body, p, li, input, select, textarea, button {
 .footer-social .social-link i{
     font-size: 20px;
 }
+
+
+/* Place social icons in the right column of the footer */
+.footer-content {display:grid; grid-template-columns: 1fr 1fr 1fr; gap:3rem;}
+.footer-content .footer-social{justify-self:end; align-self:center; display:flex; gap:1rem;}
+
+/* === Footer layout like the screenshot === */
+.footer-content{
+    display:grid;
+    grid-template-columns: 1fr 1fr auto; /* logo | links | icons */
+    align-items:center; /* vertical align */
+    gap:3rem;
+}
+.footer-content .footer-links{
+    justify-self:center;
+}
+.footer-content .footer-social{
+    justify-self:end;
+    display:flex;
+    gap:1.5rem; /* space between circles */
+}
+.footer-content .social-link{
+    width:56px;
+    height:56px;
+    border-radius:50%;
+    background: var(--color-accent-gold);
+    color: var(--color-white);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    border: none;
+}
+.footer-content .social-link i{
+    font-size:22px;
+}
+/* thin divider above copyright stays as is */
