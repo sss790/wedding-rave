@@ -44,6 +44,25 @@
   .social-icons .social-link i,.social-icons .social-link svg{font-size:18px;width:18px;height:18px;}
   .social-icons .social-link span{display:inline;}
 </style>
+<style>
+  /* Gold frame around service text blocks */
+  #service---, #service--, #service---2{ border: 1px solid #D4AF37 !important;  border-radius: 4px; padding: 12px;  color: #000000 !important; }
+</style>
+
+<style type="text/css">/* Service wrappers: neutralize hover + enforce black text */
+#service----wrap:hover{transform:none !important; box-shadow:none !important; filter:none !important; opacity:1 !important;}
+#service----wrap:hover *{transform:none !important; box-shadow:none !important; filter:none !important; opacity:1 !important;}
+
+#service---wrap:hover{transform:none !important; box-shadow:none !important; filter:none !important; opacity:1 !important;}
+#service---wrap:hover *{transform:none !important; box-shadow:none !important; filter:none !important; opacity:1 !important;}
+
+#service---2-wrap:hover{transform:none !important; box-shadow:none !important; filter:none !important; opacity:1 !important;}
+#service---2-wrap:hover *{transform:none !important; box-shadow:none !important; filter:none !important; opacity:1 !important;}
+
+#service---{ border: 1px solid #D4AF37 !important;  border-radius: 4px; padding: 12px;  color: #000000 !important; }
+#service--{ border: 1px solid #D4AF37 !important;  border-radius: 4px; padding: 12px;  color: #000000 !important; }
+#service---2{ border: 1px solid #D4AF37 !important;  border-radius: 4px; padding: 12px;  color: #000000 !important; }</style>
+
 </head>
 <body class="services-page">
 <!-- Navigation -->
@@ -78,11 +97,11 @@
 <section class="services-section">
 <div class="container">
 <!-- Wedding Full Service -->
-<div class="service-item turnkey-card">
+<div class="service-item turnkey-card" id="service----wrap" style="border: none;background-color: #F5F5DC;">
 <div class="service-image">
 <img alt="Свадьба под ключ — торжественный момент" src="images/services-turnkey.jpg"/>
 </div>
-<div class="service-content">
+<div class="service-content" id="service---">
 <h2>СВАДЬБА ПОД КЛЮЧ</h2>
 <p class="service-description">Полная организация вашей свадьбы от идеи до финального тоста. Мы берем на себя все заботы, чтобы вы могли наслаждаться каждым моментом своего особенного дня.</p>
 <div class="service-includes">
@@ -100,11 +119,11 @@
 </div>
 </div>
 <!-- Wedding Coordination -->
-<div class="service-item reverse coordination-card">
+<div class="service-item reverse coordination-card" id="service---wrap" style="border: none;background-color: #F5F5DC;">
 <div class="service-image">
 <img alt="Координация свадьбы" src="images/services-coordination.jpg"/>
 </div>
-<div class="service-content">
+<div class="service-content" id="service--">
 <h2>КООРДИНАЦИЯ СВАДЬБЫ</h2>
 <p class="service-description">Если вы самостоятельно продумали сценарий, но в день Х хотите быть спокойны и насладиться своим праздником, наша команда возьмет на себя координацию всех процессов.</p>
 <div class="service-includes">
@@ -121,11 +140,11 @@
 </div>
 </div>
 <!-- Event Organization -->
-<div class="service-item events-card">
+<div class="service-item events-card" id="service---2-wrap" style="border: none;background-color: #F5F5DC;">
 <div class="service-image">
 <img alt="Организация мероприятий" src="images/services-events.jpg"/>
 </div>
-<div class="service-content">
+<div class="service-content" id="service---2">
 <h2>ОРГАНИЗАЦИЯ МЕРОПРИЯТИЙ</h2>
 <p class="service-description">Помогу в организации девичника, дня рождения, гендер-пати, корпоратива и других мероприятий. Каждое событие будет уникальным и запоминающимся.</p>
 <div class="service-includes">
@@ -143,36 +162,14 @@
 </div>
 </div>
 </section>
-<!-- Process Section -->
+
+<!-- Process Section (replaced with photo) -->
 <section class="process-section">
-<div class="container how-we-work">
-<div class="section-header">
-<h2>КАК МЫ РАБОТАЕМ</h2>
-</div>
-<div class="process-steps">
-<div class="process-step">
-<div class="step-number">01</div>
-<h3>ЗНАКОМСТВО</h3>
-<p>Встречаемся, обсуждаем ваши идеи и пожелания</p>
-</div>
-<div class="process-step">
-<div class="step-number">02</div>
-<h3>ПЛАНИРОВАНИЕ</h3>
-<p>Создаем концепцию и план организации</p>
-</div>
-<div class="process-step">
-<div class="step-number">03</div>
-<h3>РЕАЛИЗАЦИЯ</h3>
-<p>Организуем все процессы и контролируем качество</p>
-</div>
-<div class="process-step">
-<div class="step-number">04</div>
-<h3>ПРОВЕДЕНИЕ</h3>
-<p>Координируем мероприятие в день события</p>
-</div>
-</div>
-</div>
+  <div class="container">
+    <img src="images/IMG_2573.png" alt="Фото: как мы работаем" style="width:100%;height:auto;display:block;">
+  </div>
 </section>
+
 <!-- CTA Section -->
 <section class="cta-section">
 <div class="container">
@@ -193,10 +190,6 @@
 <div class="footer-logo">
 <h3>wedding rave</h3>
 <p>Организация свадеб мечты</p>
-
-
-
-
 </div>
 <div class="footer-links">
 <a href="about.html">О нас</a>
@@ -204,14 +197,6 @@
 <a href="portfolio.html">Портфолио</a>
 <a href="contacts.html">Контакты</a>
 </div>
-
-
-
-
-
-
-
-
 <div class="footer-social">
 <a aria-label="Instagram" class="social-link" href="https://www.instagram.com/wedding_rave?igsh=MWFwcXN5NXZ1Y2N0dw==" rel="noopener noreferrer" target="_blank"><i class="fab fa-instagram"></i></a>
 <a class="social-link" href="https://wa.me/89104656880" target="_blank"><i class="fab fa-whatsapp"></i></a>

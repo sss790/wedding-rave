@@ -3698,3 +3698,43 @@ body, p, li, input, select, textarea, button {
     font-size:22px;
 }
 /* thin divider above copyright stays as is */
+
+
+/* === Fix: one-line expertise tags in the Kasshirskaya Alla block (About page) === */
+.team-content .member-expertise{
+    display: flex;
+    flex-wrap: nowrap;           /* keep tags on one line */
+    gap: 0.6rem;                 /* a bit tighter spacing */
+    align-items: center;
+}
+.team-content .expertise-tag{
+    white-space: nowrap;         /* prevent tag text from breaking */
+    font-size: 0.75rem;          /* slightly smaller text */
+    padding: 0.4rem 0.9rem;      /* slightly smaller paddings */
+    letter-spacing: 0.03em;      /* a touch tighter to fit */
+}
+/* On very narrow screens let them wrap to avoid overflow */
+@media (max-width: 480px){
+  .team-content .member-expertise{flex-wrap: wrap;}
+}
+
+
+/* === Services page background adjustments === */
+/* Gray background from the start of service cards through to before the "Как мы работаем" photo */
+.services-page .services-section{
+  background: #EDEDED !important; /* light gray */
+}
+
+/* Light beige cards for each service block */
+.services-page .service-item{
+  background: var(--color-accent-champagne) !important; /* light beige */
+}
+
+/* Ensure inner content stays readable on beige cards */
+.services-page .service-item .service-content,
+.services-page .service-item .service-description,
+.services-page .service-item h2,
+.services-page .service-item h3,
+.services-page .service-item li{
+  color: var(--color-dark-gray) !important;
+}
