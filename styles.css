@@ -1321,6 +1321,35 @@ p {
     aspect-ratio: 4/3;
     max-width: 100%;
 }
+/* --- FIX: uniform card aspect ratio & image fit across all portfolio categories --- */
+.portfolio-item {
+    aspect-ratio: 4 / 3; /* keeps all cards the same height per column width */
+}
+.portfolio-image,
+.portfolio-image a,
+.portfolio-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.portfolio-image img {
+    object-fit: cover; /* crop verticals so there are no "steps" */
+}
+
+/* Fallback for very old browsers that don't support aspect-ratio */
+@supports not (aspect-ratio: 1 / 1) {
+    .portfolio-item {
+        position: relative;
+        height: 0;
+        padding-bottom: 75%; /* 4:3 ratio */
+    }
+    .portfolio-item .portfolio-image {
+        position: absolute;
+        inset: 0;
+    }
+}
+/* --- END FIX --- */
+
 
 .portfolio-image {
     position: relative;
@@ -3737,4 +3766,461 @@ body, p, li, input, select, textarea, button {
 .services-page .service-item h3,
 .services-page .service-item li{
   color: var(--color-dark-gray) !important;
+}
+
+
+/* === FINAL OVERRIDES: portfolio equal heights, no white bars === */
+.portfolio-grid .portfolio-item {
+    position: relative !important;
+    aspect-ratio: 4 / 3 !important; /* set the card ratio */
+}
+.portfolio-grid .portfolio-item .portfolio-image {
+    position: absolute !important;
+    inset: 0 !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: transparent !important;
+}
+.portfolio-grid .portfolio-item .portfolio-image a,
+.portfolio-grid .portfolio-item .portfolio-image img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+.portfolio-grid .portfolio-item .portfolio-image img {
+    object-fit: cover !important; /* crop verticals to fill the card */
+}
+/* === END OVERRIDES === */
+
+
+/* == Custom: Dark glass background + dark gold border for 'СВАДЬБА ПОД КЛЮЧ' == */
+.services-page .turnkey-card{
+  background: rgba(12,12,12,0.65) !important; /* dark matte glass */
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid #7A5C1B; /* dark gold */
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+/* Keep the same appearance on hover */
+.services-page .turnkey-card:hover{
+  background: rgba(12,12,12,0.65) !important;
+  border-color: #7A5C1B !important;
+}
+
+/* Remove any inner beige backgrounds for image/text parts */
+.services-page .turnkey-card .service-image,
+.services-page .turnkey-card .service-content{
+  background: transparent !important;
+}
+
+/* Improve readability on dark glass */
+.services-page .turnkey-card h1,
+.services-page .turnkey-card h2,
+.services-page .turnkey-card h3,
+.services-page .turnkey-card p,
+.services-page .turnkey-card li,
+.services-page .turnkey-card a,
+.services-page .turnkey-card .service-description{
+  color: #F5F5F5 !important;
+}
+
+/* Optional: slightly dim regular text, keep headings brighter */
+.services-page .turnkey-card p,
+.services-page .turnkey-card li{
+  color: rgba(245,245,245,0.9) !important;
+}
+.services-page .turnkey-card h2,
+.services-page .turnkey-card h3{
+  color: #FFFFFF !important;
+  letter-spacing: 0.03em;
+}
+
+/* Keep the image uncropped (already handled above in file) and add subtle rounding */
+.services-page .turnkey-card .service-image img{
+  border-radius: 8px;
+}
+
+/* Buttons inside the dark card: keep contrast */
+.services-page .turnkey-card .btn.btn-primary{
+  background: #D4AF37; /* classic gold for button */
+  color: #1a1a1a !important;
+  border-color: #D4AF37;
+}
+.services-page .turnkey-card .btn.btn-primary:hover{
+  filter: brightness(0.95);
+}
+
+
+
+/* == Update: make 'СВАДЬБА ПОД КЛЮЧ' glass background more transparent and glass-like == */
+.services-page .turnkey-card{
+  /* layered backgrounds to mimic glass sheen */
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.03)) ,
+    rgba(12,12,12,0.22) !important; /* lighter alpha for more transparency */
+  -webkit-backdrop-filter: blur(18px) saturate(120%);
+  backdrop-filter: blur(18px) saturate(120%);
+  /* keep dark-gold frame as requested */
+  border: 1px solid #7A5C1B;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.10), /* subtle inner highlight */
+    0 10px 40px rgba(0,0,0,0.18);           /* soft depth shadow */
+}
+
+/* Keep hover the same transparency (no darkening) */
+.services-page .turnkey-card:hover{
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.03)) ,
+    rgba(12,12,12,0.22) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(120%);
+  backdrop-filter: blur(18px) saturate(120%);
+  border-color: #7A5C1B !important;
+}
+
+
+
+/* == Update: 'СВАДЬБА ПОД КЛЮЧ' use attached photo as background with darkening + glass effect like 'НАШИ ЦЕННОСТИ' == */
+.services-page .turnkey-card{
+  position: relative;
+  overflow: hidden;
+  /* glass panel */
+  background: rgba(255,255,255,0.02) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(115%);
+  backdrop-filter: blur(14px) saturate(115%);
+  border: 1px solid #7A5C1B; /* dark gold frame */
+}
+
+/* background image layer + dark overlay */
+.services-page .turnkey-card::before{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(180deg, rgba(0,0,0,.65), rgba(0,0,0,.65)), url('images/turnkey-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+/* ensure inner blocks are transparent to let the background show through */
+.services-page .turnkey-card .service-image,
+.services-page .turnkey-card .service-content{
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* keep text readable on glass */
+.services-page .turnkey-card h1,
+.services-page .turnkey-card h2,
+.services-page .turnkey-card h3,
+.services-page .turnkey-card p,
+.services-page .turnkey-card li,
+.services-page .turnkey-card a{
+  color: #F5F5F5 !important;
+}
+
+/* optional subtle inner highlight like value cards */
+.services-page .turnkey-card{
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08), 0 10px 40px rgba(0,0,0,0.18);
+}
+
+
+
+/* == Update: background photo + dark overlay + glass effect for 'Координация свадьбы' and 'Организация мероприятий' == */
+.services-page .coordination-card,
+.services-page .events-card{
+  position: relative;
+  overflow: hidden;
+  background: rgba(255,255,255,0.02) !important; /* glass panel */
+  -webkit-backdrop-filter: blur(14px) saturate(115%);
+  backdrop-filter: blur(14px) saturate(115%);
+  border: 1px solid #7A5C1B; /* dark gold border for consistency */
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08), 0 10px 40px rgba(0,0,0,0.18);
+}
+
+.services-page .coordination-card::before{
+  content: '';
+  position: absolute; inset: 0;
+  background-image: linear-gradient(180deg, rgba(0,0,0,.65), rgba(0,0,0,.65)), url('images/coordination-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.services-page .events-card::before{
+  content: '';
+  position: absolute; inset: 0;
+  background-image: linear-gradient(180deg, rgba(0,0,0,.65), rgba(0,0,0,.65)), url('images/events-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+/* Ensure inner blocks are transparent to show the background */
+.services-page .coordination-card .service-image,
+.services-page .coordination-card .service-content,
+.services-page .events-card .service-image,
+.services-page .events-card .service-content{
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Text readability on dark glass */
+.services-page .coordination-card h1,
+.services-page .coordination-card h2,
+.services-page .coordination-card h3,
+.services-page .coordination-card p,
+.services-page .coordination-card li,
+.services-page .coordination-card a,
+.services-page .events-card h1,
+.services-page .events-card h2,
+.services-page .events-card h3,
+.services-page .events-card p,
+.services-page .events-card li,
+.services-page .events-card a{
+  color: #F5F5F5 !important;
+}
+
+
+
+/* == Request: remove golden border from text (service-content) in all three service cards == */
+.services-page .turnkey-card .service-content,
+.services-page .coordination-card .service-content,
+.services-page .events-card .service-content{
+  border: none !important;
+  box-shadow: none !important;
+}
+
+
+
+/* == Fix: remove any gold borders in all three service cards (outer + inner) == */
+.services-page .turnkey-card,
+.services-page .coordination-card,
+.services-page .events-card{
+  border: none !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06), 0 10px 40px rgba(0,0,0,0.18) !important;
+}
+/* Remove inner borders on text containers (and any pseudo-elements) */
+.services-page .turnkey-card .service-content,
+.services-page .coordination-card .service-content,
+.services-page .events-card .service-content,
+.services-page .turnkey-card .service-content::before,
+.services-page .coordination-card .service-content::before,
+.services-page .events-card .service-content::before,
+.services-page .turnkey-card .service-content::after,
+.services-page .coordination-card .service-content::after,
+.services-page .events-card .service-content::after{
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Force text to be pure white for readability */
+.services-page .turnkey-card h1,
+.services-page .turnkey-card h2,
+.services-page .turnkey-card h3,
+.services-page .turnkey-card p,
+.services-page .turnkey-card li,
+.services-page .turnkey-card a,
+.services-page .coordination-card h1,
+.services-page .coordination-card h2,
+.services-page .coordination-card h3,
+.services-page .coordination-card p,
+.services-page .coordination-card li,
+.services-page .coordination-card a,
+.services-page .events-card h1,
+.services-page .events-card h2,
+.services-page .events-card h3,
+.services-page .events-card p,
+.services-page .events-card li,
+.services-page .events-card a{
+  color: #ffffff !important;
+}
+
+/* Bullet color fix for list markers specifically */
+.services-page .turnkey-card ul li::marker,
+.services-page .coordination-card ul li::marker,
+.services-page .events-card ul li::marker{
+  color: #ffffff !important;
+}
+
+/* Button contrast on dark background */
+.services-page .turnkey-card .btn.btn-primary,
+.services-page .coordination-card .btn.btn-primary,
+.services-page .events-card .btn.btn-primary{
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: none !important;
+}
+.services-page .turnkey-card .btn.btn-primary:hover,
+.services-page .coordination-card .btn.btn-primary:hover,
+.services-page .events-card .btn.btn-primary:hover{
+  filter: brightness(0.9);
+}
+
+
+
+/* == Hard reset: remove all borders within service text areas == */
+.services-page .turnkey-card .service-content,
+.services-page .turnkey-card .service-content *,
+.services-page .coordination-card .service-content,
+.services-page .coordination-card .service-content *,
+.services-page .events-card .service-content,
+.services-page .events-card .service-content *{
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Force font color white across descendants */
+.services-page .turnkey-card .service-content,
+.services-page .turnkey-card .service-content *,
+.services-page .coordination-card .service-content,
+.services-page .coordination-card .service-content *,
+.services-page .events-card .service-content,
+.services-page .events-card .service-content *{
+  color: #ffffff !important;
+}
+/* Button styles per request: thin gold border, no fill, white text */
+.services-page .turnkey-card .btn.btn-primary,
+.services-page .coordination-card .btn.btn-primary,
+.services-page .events-card .btn.btn-primary{
+  background: transparent !important;
+  color: #ffffff !important;
+  border: 1px solid var(--color-accent-gold) !important;
+  box-shadow: none !important;
+}
+.services-page .turnkey-card .btn.btn-primary:hover,
+.services-page .coordination-card .btn.btn-primary:hover,
+.services-page .events-card .btn.btn-primary:hover{
+  background: rgba(255,255,255,0.08) !important;
+}
+
+
+
+/* == Request: change remaining gold frames to black on Services page == */
+/* Outer card frame (if present) */
+.services-page .turnkey-card,
+.services-page .coordination-card,
+.services-page .events-card{
+  border: 1px solid #000 !important;
+}
+
+/* Text block frame inside cards */
+.services-page .turnkey-card .service-content,
+.services-page .coordination-card .service-content,
+.services-page .events-card .service-content{
+  border: 1px solid #000 !important;
+  background: transparent !important; /* keep glass look from parent */
+  box-shadow: none !important;
+}
+
+/* Keep white, readable text */
+.services-page .turnkey-card .service-content,
+.services-page .turnkey-card .service-content *,
+.services-page .coordination-card .service-content,
+.services-page .coordination-card .service-content *,
+.services-page .events-card .service-content,
+.services-page .events-card .service-content *{
+  color: #ffffff !important;
+}
+
+/* Keep button outline gold (unchanged) */
+.services-page .turnkey-card .btn.btn-primary,
+.services-page .coordination-card .btn.btn-primary,
+.services-page .events-card .btn.btn-primary{
+  border: 1px solid var(--color-accent-gold) !important;
+  background: transparent !important;
+  color: #ffffff !important;
+}
+
+
+
+/* == Override: Use the same attached photo for 'Свадьба под ключ' and 'Организация мероприятий' == */
+.services-page .turnkey-card::before{
+  background-image: linear-gradient(180deg, rgba(0,0,0,.65), rgba(0,0,0,.65)), url('images/services-shared-bg.jpg') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+.services-page .events-card::before{
+  background-image: linear-gradient(180deg, rgba(0,0,0,.65), rgba(0,0,0,.65)), url('images/services-shared-bg.jpg') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+
+
+
+/* == Enforce black inner frame on Services text areas == */
+.services-page .turnkey-card .service-content,
+.services-page .coordination-card .service-content,
+.services-page .events-card .service-content{
+  border: none !important;
+  outline: none !important;
+  box-shadow: 0 0 0 1px #000 !important; /* draw crisp black frame */
+  border-radius: 10px !important;
+  background: transparent !important;
+}
+
+/* Keep button borders gold (no change) */
+.services-page .turnkey-card .service-content .btn.btn-primary,
+.services-page .coordination-card .service-content .btn.btn-primary,
+.services-page .events-card .service-content .btn.btn-primary{
+  border: 1px solid var(--color-accent-gold) !important;
+  background: transparent !important;
+  color: #fff !important;
+}
+
+
+/* === Remove frames on service cards (turnkey, coordination, events) === */
+.services-page .turnkey-card,
+.services-page .coordination-card,
+.services-page .events-card,
+.services-page .turnkey-card .service-content,
+.services-page .coordination-card .service-content,
+.services-page .events-card .service-content{
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* === FINAL OVERRIDES: remove all frames from service cards and their content === */
+.services-page .service-item,
+.services-page .service-item:hover,
+.services-page .service-item::before,
+.services-page .service-item::after,
+.services-page .service-item .service-content,
+.services-page .service-item .service-content:hover,
+.services-page .service-item .service-content::before,
+.services-page .service-item .service-content::after,
+.service-content{
+  border: none !important;
+  border-color: transparent !important;
+  border-image: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Explicitly neutralize card-level borders on these three blocks */
+.services-page .turnkey-card,
+.services-page .turnkey-card:hover,
+.services-page .coordination-card,
+.services-page .coordination-card:hover,
+.services-page .events-card,
+.services-page .events-card:hover,
+.services-page .turnkey-card::before,
+.services-page .coordination-card::before,
+.services-page .events-card::before,
+.services-page .turnkey-card::after,
+.services-page .coordination-card::after,
+.services-page .events-card::after{
+  border: none !important;
+  border-color: transparent !important;
+  border-image: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
